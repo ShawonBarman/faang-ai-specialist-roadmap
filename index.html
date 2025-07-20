@@ -1,0 +1,2139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAANG AI Specialist 12-Month Roadmap</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      opacity: 0.1;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .header h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(45deg, #fff, #e0f2fe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header .subtitle {
+      font-size: 1.3rem;
+      opacity: 0.9;
+      font-weight: 400;
+      margin-bottom: 2rem;
+    }
+
+    .company-logos {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+
+    .company-logo {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 0.75rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .timeline-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .info-card {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1.5rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      text-align: center;
+    }
+
+    .info-card .number {
+      font-size: 2rem;
+      font-weight: 700;
+      display: block;
+    }
+
+    .info-card .label {
+      font-size: 0.9rem;
+      opacity: 0.8;
+      margin-top: 0.5rem;
+    }
+
+    .download-section {
+      padding: 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .download-btn {
+      background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4);
+    }
+
+    .download-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .content {
+      padding: 2rem;
+    }
+
+    .month-section {
+      margin-bottom: 4rem;
+    }
+
+    .month-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 2rem;
+      padding: 1.5rem 0;
+      border-bottom: 3px solid #3b82f6;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .month-title::before {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, #3b82f6, #06b6d4);
+      border-radius: 2px;
+    }
+
+    .month-icon {
+      font-size: 2.5rem;
+    }
+
+    .weeks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .week-card {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid #f1f5f9;
+      position: relative;
+    }
+
+    .week-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    }
+
+    .week-header {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      padding: 2rem;
+      border-bottom: 1px solid #e2e8f0;
+      position: relative;
+    }
+
+    .week-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 1rem;
+    }
+
+    .week-progress {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: #64748b;
+      margin-bottom: 1rem;
+    }
+
+    .progress-bar {
+      flex: 1;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #059669);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+      width: 0%;
+    }
+
+    .week-duration {
+      background: rgba(59, 130, 246, 0.1);
+      color: #3b82f6;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .week-content {
+      padding: 2rem;
+    }
+
+    .topics-section {
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .topics-list {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .topic-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      padding: 0.75rem;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .topic-item:hover {
+      background: #f8fafc;
+      border-color: #e2e8f0;
+    }
+
+    .topic-checkbox {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #d1d5db;
+      border-radius: 6px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .topic-checkbox:checked {
+      background: linear-gradient(135deg, #10b981, #059669);
+      border-color: #10b981;
+    }
+
+    .topic-checkbox:checked::after {
+      content: '✓';
+      position: absolute;
+      top: -1px;
+      left: 3px;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .topic-label {
+      font-size: 0.95rem;
+      color: #374151;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      line-height: 1.4;
+    }
+
+    .topic-item:has(.topic-checkbox:checked) .topic-label {
+      color: #10b981;
+      text-decoration: line-through;
+      opacity: 0.7;
+    }
+
+    .project-section {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border: 1px solid #f59e0b;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .project-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #b45309;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .project-description {
+      font-size: 0.9rem;
+      color: #92400e;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .project-checkbox {
+      margin-right: 0.5rem;
+      transform: scale(1.1);
+    }
+
+    .journal-section {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 2px solid #f1f5f9;
+    }
+
+    .journal-label {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .journal-textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 1rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      resize: vertical;
+      transition: all 0.2s ease;
+      background: #fafafa;
+    }
+
+    .journal-textarea:focus {
+      outline: none;
+      border-color: #3b82f6;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .journal-textarea::placeholder {
+      color: #9ca3af;
+    }
+
+    .stats-section {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      padding: 2.5rem;
+      margin: 2rem 0;
+      border-radius: 20px;
+      border: 1px solid #bae6fd;
+    }
+
+    .stats-title {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0369a1;
+      margin-bottom: 2rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #0369a1;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      color: #64748b;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
+    .floating-save-indicator {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+    }
+
+    .floating-save-indicator.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .interview-prep-section {
+      background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+      border: 1px solid #a855f7;
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    .interview-prep-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #7c3aed;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .interview-topics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .interview-topic {
+      background: rgba(255, 255, 255, 0.6);
+      padding: 1rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      color: #6b21a8;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+
+      .header h1 {
+        font-size: 2.2rem;
+      }
+
+      .weeks-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-info {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .company-logos {
+        gap: 1rem;
+      }
+
+      .company-logo {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .loading {
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .difficulty-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .difficulty-beginner {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .difficulty-intermediate {
+      background: #fef3c7;
+      color: #b45309;
+    }
+
+    .difficulty-advanced {
+      background: #fecaca;
+      color: #b91c1c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-content">
+        <h1>🚀 FAANG AI Specialist Mastery</h1>
+        <p class="subtitle">Your comprehensive 12-month roadmap to land AI roles at top tech companies</p>
+        
+        <div class="company-logos">
+          <div class="company-logo">🔍 Google</div>
+          <div class="company-logo">📘 Meta</div>
+          <div class="company-logo">📦 Amazon</div>
+          <div class="company-logo">🍎 Apple</div>
+          <div class="company-logo">🎬 Netflix</div>
+          <div class="company-logo">⚡ OpenAI</div>
+        </div>
+        
+        <div class="timeline-info">
+          <div class="info-card">
+            <span class="number">2</span>
+            <span class="label">Hours Daily</span>
+          </div>
+          <div class="info-card">
+            <span class="number">12</span>
+            <span class="label">Months Total</span>
+          </div>
+          <div class="info-card">
+            <span class="number">700+</span>
+            <span class="label">Study Hours</span>
+          </div>
+          <div class="info-card">
+            <span class="number">48</span>
+            <span class="label">Real Projects</span>
+          </div>
+          <div class="info-card">
+            <span class="number">Start</span>
+            <span class="label">Aug 1, 2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="download-section">
+      <button class="download-btn" onclick="downloadPDF()">
+        📄 Download Complete Progress Report
+      </button>
+      <p style="margin-top: 0.5rem; color: #64748b; font-size: 0.9rem;">
+        Generate a comprehensive PDF with all your progress, projects, and interview preparation
+      </p>
+    </div>
+
+    <div class="stats-section">
+      <h3 class="stats-title">🎯 Your Progress Dashboard</h3>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number" id="totalProgress">0%</span>
+          <span class="stat-label">Overall Progress</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="completedTopics">0</span>
+          <span class="stat-label">Topics Completed</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="completedProjects">0</span>
+          <span class="stat-label">Projects Completed</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="journalEntries">0</span>
+          <span class="stat-label">Journal Entries</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number" id="studyStreak">0</span>
+          <span class="stat-label">Day Streak</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="interview-prep-section">
+      <h3 class="interview-prep-title">🎯 FAANG Interview Preparation Focus Areas</h3>
+      <div class="interview-topics">
+        <div class="interview-topic">🧠 Algorithm & Data Structures</div>
+        <div class="interview-topic">🤖 ML System Design</div>
+        <div class="interview-topic">📊 Statistics & Probability</div>
+        <div class="interview-topic">💡 Behavioral Leadership</div>
+        <div class="interview-topic">⚡ Coding in Python/SQL</div>
+        <div class="interview-topic">📈 Product Sense & Business</div>
+        <div class="interview-topic">🔧 MLOps & Production</div>
+        <div class="interview-topic">🎨 Portfolio Projects</div>
+      </div>
+    </div>
+
+    <div class="content" id="roadmap"></div>
+  </div>
+
+  <div class="floating-save-indicator" id="saveIndicator">
+    💾 Progress Saved!
+  </div>
+
+  <script>
+    const roadmap = [
+      {
+        title: "Month 1: Programming & Math Foundations",
+        icon: "🐍",
+        weeks: [
+          {
+            title: "Week 1: Python Mastery",
+            duration: "14 hours",
+            difficulty: "beginner",
+            topics: [
+              "Python syntax, data types, and control structures",
+              "Functions, lambdas, and decorators",
+              "Object-oriented programming concepts",
+              "File handling and exception management",
+              "Git version control and GitHub"
+            ],
+            project: {
+              title: "🎯 Project: Python Data Analysis Tool",
+              description: "Build a command-line tool that analyzes CSV files, calculates statistics, and generates visualizations. This project demonstrates core Python skills valued by FAANG companies."
+            }
+          },
+          {
+            title: "Week 2: Advanced Python & Libraries",
+            duration: "14 hours",
+            difficulty: "intermediate",
+            topics: [
+              "NumPy for numerical computing",
+              "Pandas for data manipulation",
+              "List comprehensions and generators",
+              "Regular expressions and string processing",
+              "Virtual environments and package management"
+            ],
+            project: {
+              title: "📊 Project: Stock Market Data Pipeline",
+              description: "Create an automated pipeline that fetches stock data, processes it with Pandas, and stores results. Include data cleaning and basic financial metrics calculation."
+            }
+          },
+          {
+            title: "Week 3: Mathematics for AI",
+            duration: "14 hours",
+            difficulty: "intermediate",
+            topics: [
+              "Linear algebra: vectors, matrices, eigenvalues",
+              "Calculus: derivatives, gradients, chain rule",
+              "Probability theory and Bayes' theorem",
+              "Statistics: distributions, hypothesis testing",
+              "Information theory and entropy"
+            ],
+            project: {
+              title: "🧮 Project: Mathematical Computing Library",
+              description: "Implement core mathematical functions from scratch (matrix operations, statistical functions). This shows deep understanding of AI foundations."
+            }
+          },
+          {
+            title: "Week 4: Data Visualization & EDA",
+            duration: "14 hours",
+            difficulty: "beginner",
+            topics: [
+              "Matplotlib for plotting and charts",
+              "Seaborn for statistical visualizations",
+              "Plotly for interactive visualizations",
+              "Exploratory data analysis techniques",
+              "Data storytelling principles"
+            ],
+            project: {
+              title: "📈 Project: Interactive Dashboard",
+              description: "Build a web-based dashboard using Plotly Dash that visualizes real-world datasets. Include filters, multiple chart types, and insights extraction."
+            }
+          }
+        ]
+      },
+      {
+        title: "Month 2: Machine Learning Fundamentals",
+        icon: "🤖",
+        weeks: [
+          {
+            title: "Week 5: Supervised Learning - Regression",
+            duration: "14 hours",
+            difficulty: "intermediate",
+            topics: [
+              "Linear and polynomial regression",
+              "Regularization: Ridge, Lasso, Elastic Net",
+              "Feature selection and engineering",
+              "Cross-validation and model evaluation",
+              "Gradient descent optimization"
+            ],
+            project: {
+              title: "🏠 Project: Real Estate Price Predictor",
+              description: "Build an end-to-end regression model to predict house prices. Include feature engineering, model comparison, and interpretation. Deploy as a web app."
+            }
+          },
+          {
+            title: "Week 6: Supervised Learning - Classification",
+            duration: "14 hours",
+            difficulty: "intermediate",
+            topics: [
+              "Logistic regression and decision boundaries",
+              "Decision trees and random forests",
+              "Support Vector Machines (SVM)",
+              "k-Nearest Neighbors (KNN)",
+              "Ensemble methods and voting classifiers"
+            ],
+            project: {
+              title: "🚀 Project: Fraud Detection System",
+              description: "Create a classification system to detect fraudulent transactions. Use multiple algorithms, handle imbalanced data, and optimize for business metrics."
+            }
+          },
+          {
+            title: "Week 7: Unsupervised Learning",
+            duration: "14 hours",
+            difficulty: "intermediate",
+            topics: [
+              "K-means and hierarchical clustering",
+              "DBSCAN and density-based clustering",
+              "Principal Component Analysis (PCA)",
+              "t-SNE and UMAP for visualization",
+              "Anomaly detection techniques"
+            ],
+            project: {
+              title: "🎵 Project: Music Recommendation Engine",
+              description: "Build a collaborative filtering system using clustering and dimensionality reduction. Include user segmentation and recommendation algorithms."
+            }
+          },
+          {
+            title: "Week 8: Model Evaluation & Pipelines",
+            duration: "14 hours",
+            difficulty: "intermediate",
+            topics: [
+              "Confusion matrices and classification metrics",
+              "ROC curves and AUC analysis",
+              "Hyperparameter tuning with Grid/Random Search",
+              "Scikit-learn pipelines and transformers",
+              "Model interpretation with SHAP"
+            ],
+            project: {
+              title: "⚕️ Project: Medical Diagnosis Assistant",
+              description: "Develop a machine learning pipeline for medical diagnosis. Include data preprocessing, model selection, evaluation, and interpretability features."
+            }
+          }
+        ]
+      },
+      {
+        title: "Month 3: Deep Learning & Neural Networks",
+        icon: "🧠",
+        weeks: [
+          {
+            title: "Week 9: Neural Network Fundamentals",
+            duration: "14 hours",
+            difficulty: "intermediate",
+            topics: [
+              "Perceptrons and multi-layer networks",
+              "Activation functions and their properties",
+              "Backpropagation algorithm",
+              "Loss functions and optimization",
+              "TensorFlow and PyTorch basics"
+            ],
+            project: {
+              title: "🎨 Project: Digit Recognition System",
+              description: "Build a neural network from scratch and compare with TensorFlow implementation. Create a web interface for real-time digit recognition."
+            }
+          },
+          {
+            title: "Week 10: Convolutional Neural Networks",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Convolution and pooling operations",
+              "CNN architectures: LeNet, AlexNet, VGG",
+              "Transfer learning and fine-tuning",
+              "Image preprocessing and augmentation",
+              "Object detection basics"
+            ],
+            project: {
+              title: "📷 Project: Image Classification App",
+              description: "Create a mobile-ready image classifier using transfer learning. Include data augmentation, model optimization, and deployment to cloud platforms."
+            }
+          },
+          {
+            title: "Week 11: Recurrent Neural Networks",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "RNN, LSTM, and GRU architectures",
+              "Sequence-to-sequence models",
+              "Text preprocessing and tokenization",
+              "Word embeddings: Word2Vec, GloVe",
+              "Time series forecasting"
+            ],
+            project: {
+              title: "💬 Project: Intelligent Chatbot",
+              description: "Build a conversational AI using LSTM networks. Include intent recognition, entity extraction, and context management for multi-turn conversations."
+            }
+          },
+          {
+            title: "Week 12: Advanced Deep Learning",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+                "Transformer architecture and attention mechanisms",
+              "Generative Adversarial Networks (GANs)",
+              "Autoencoders and variational autoencoders",
+              "Regularization techniques: dropout, batch norm",
+              "Advanced optimization: Adam, learning rate scheduling"
+            ],
+            project: {
+              title: "🎭 Project: AI Art Generator",
+              description: "Implement a GAN to generate artwork or a VAE for style transfer. Include training optimization and a web interface for users to generate custom art."
+            }
+          }
+        ]
+      },
+      {
+        title: "Month 4: Natural Language Processing & LLMs",
+        icon: "📝",
+        weeks: [
+          {
+            title: "Week 13: NLP Fundamentals",
+            duration: "14 hours",
+            difficulty: "intermediate",
+            topics: [
+              "Text preprocessing and cleaning",
+              "Tokenization, stemming, and lemmatization",
+              "N-grams and language models",
+              "Named Entity Recognition (NER)",
+              "Sentiment analysis techniques"
+            ],
+            project: {
+              title: "📰 Project: News Sentiment Analyzer",
+              description: "Build a real-time news sentiment analysis system. Scrape news articles, analyze sentiment, and create a dashboard showing market sentiment trends."
+            }
+          },
+          {
+            title: "Week 14: Transformer Models & BERT",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Attention mechanisms and self-attention",
+              "BERT, GPT, and T5 architectures",
+              "Fine-tuning pre-trained models",
+              "Hugging Face Transformers library",
+              "Question answering and text classification"
+            ],
+            project: {
+              title: "🤔 Project: Intelligent Q&A System",
+              description: "Create a BERT-based question answering system for a specific domain (e.g., legal, medical). Include document retrieval and answer ranking."
+            }
+          },
+          {
+            title: "Week 15: Large Language Models",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "GPT architecture and training process",
+              "Prompt engineering techniques",
+              "Few-shot and zero-shot learning",
+              "LLM fine-tuning and PEFT methods",
+              "Evaluation metrics for language models"
+            ],
+            project: {
+              title: "✍️ Project: Code Documentation Generator",
+              description: "Build an LLM-powered tool that generates documentation for code repositories. Include multiple programming languages and integration with GitHub."
+            }
+          },
+          {
+            title: "Week 16: Advanced NLP Applications",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Machine translation systems",
+              "Text summarization techniques",
+              "Information extraction and knowledge graphs",
+              "Conversational AI and dialogue systems",
+              "Multilingual NLP and cross-lingual models"
+            ],
+            project: {
+              title: "🌍 Project: Multilingual Document Processor",
+              description: "Create a system that processes documents in multiple languages, extracts key information, and generates summaries. Include translation capabilities."
+            }
+          }
+        ]
+      },
+      {
+        title: "Month 5: Computer Vision & Multimodal AI",
+        icon: "👁️",
+        weeks: [
+          {
+            title: "Week 17: Computer Vision Fundamentals",
+            duration: "14 hours",
+            difficulty: "intermediate",
+            topics: [
+              "Image processing with OpenCV",
+              "Feature detection and matching",
+              "Image segmentation techniques",
+              "Object detection: YOLO, R-CNN",
+              "Facial recognition and biometrics"
+            ],
+            project: {
+              title: "🚗 Project: Autonomous Vehicle Vision",
+              description: "Build a computer vision system for autonomous vehicles. Include lane detection, object recognition, and distance estimation using stereo vision."
+            }
+          },
+          {
+            title: "Week 18: Advanced Computer Vision",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Instance and semantic segmentation",
+              "Pose estimation and tracking",
+              "Optical character recognition (OCR)",
+              "Style transfer and image generation",
+              "3D computer vision and depth estimation"
+            ],
+            project: {
+              title: "🏃 Project: Fitness Pose Tracker",
+              description: "Create a real-time pose estimation system for fitness applications. Include exercise counting, form correction, and progress tracking."
+            }
+          },
+          {
+            title: "Week 19: Multimodal AI Systems",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Vision-language models (CLIP, DALL-E)",
+              "Image captioning and visual Q&A",
+              "Video understanding and analysis",
+              "Audio-visual synchronization",
+              "Cross-modal retrieval systems"
+            ],
+            project: {
+              title: "🎬 Project: Video Content Analyzer",
+              description: "Build a system that analyzes video content, generates captions, identifies scenes, and creates searchable metadata for video libraries."
+            }
+          },
+          {
+            title: "Week 20: Real-time AI Applications",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Edge computing and model optimization",
+              "Real-time inference optimization",
+              "Mobile AI deployment",
+              "Streaming data processing",
+              "Low-latency model serving"
+            ],
+            project: {
+              title: "📱 Project: Mobile AI Assistant",
+              description: "Develop a mobile app with real-time AI capabilities (voice recognition, image classification, text analysis) optimized for edge deployment."
+            }
+          }
+        ]
+      },
+      {
+        title: "Month 6: MLOps & Production Systems",
+        icon: "⚙️",
+        weeks: [
+          {
+            title: "Week 21: Model Development Lifecycle",
+            duration: "14 hours",
+            difficulty: "intermediate",
+            topics: [
+              "Experiment tracking with MLflow",
+              "Model versioning and registry",
+              "Data versioning with DVC",
+              "Continuous integration for ML",
+              "Model validation and testing"
+            ],
+            project: {
+              title: "🔄 Project: ML Experiment Platform",
+              description: "Build a complete MLOps platform for experiment tracking, model management, and automated retraining. Include A/B testing capabilities."
+            }
+          },
+          {
+            title: "Week 22: Model Deployment & Serving",
+            duration: "14 hours",
+            difficulty: "intermediate",
+            topics: [
+              "REST APIs with FastAPI and Flask",
+              "Model containerization with Docker",
+              "Kubernetes for model orchestration",
+              "Load balancing and auto-scaling",
+              "API security and authentication"
+            ],
+            project: {
+              title: "🚀 Project: Scalable ML Microservice",
+              description: "Deploy a machine learning model as a scalable microservice using Docker and Kubernetes. Include monitoring, logging, and auto-scaling."
+            }
+          },
+          {
+            title: "Week 23: Monitoring & Observability",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Model drift detection and monitoring",
+              "Performance metrics and alerting",
+              "Logging and distributed tracing",
+              "Data quality monitoring",
+              "A/B testing for ML models"
+            ],
+            project: {
+              title: "📊 Project: ML Monitoring Dashboard",
+              description: "Create a comprehensive monitoring system for ML models in production. Include drift detection, performance alerts, and automated retraining triggers."
+            }
+          },
+          {
+            title: "Week 24: Data Engineering for ML",
+            duration: "14 hours",
+            difficulty: "intermediate",
+            topics: [
+              "Data pipelines with Apache Airflow",
+              "Feature stores and feature engineering",
+              "Data lakes and warehouses",
+              "Stream processing with Kafka",
+              "ETL/ELT best practices"
+            ],
+            project: {
+              title: "🏗️ Project: Real-time ML Pipeline",
+              description: "Build an end-to-end real-time ML pipeline that ingests streaming data, processes features, makes predictions, and stores results."
+            }
+          }
+        ]
+      },
+      {
+        title: "Month 7: Cloud Platforms & Big Data",
+        icon: "☁️",
+        weeks: [
+          {
+            title: "Week 25: AWS Machine Learning",
+            duration: "14 hours",
+            difficulty: "intermediate",
+            topics: [
+              "SageMaker for model training and deployment",
+              "AWS Lambda for serverless ML",
+              "S3 and data storage strategies",
+              "EC2 and GPU instances",
+              "AWS ML services: Rekognition, Comprehend"
+            ],
+            project: {
+              title: "☁️ Project: Serverless ML Application",
+              description: "Build a serverless machine learning application on AWS using Lambda, API Gateway, and SageMaker. Include automatic scaling and cost optimization."
+            }
+          },
+          {
+            title: "Week 26: Google Cloud Platform",
+            duration: "14 hours",
+            difficulty: "intermediate",
+            topics: [
+              "Vertex AI for ML lifecycle management",
+              "BigQuery for data analytics",
+              "Cloud Functions and Cloud Run",
+              "AutoML and pre-trained APIs",
+              "TensorFlow Extended (TFX) pipelines"
+            ],
+            project: {
+              title: "🔍 Project: Enterprise Search System",
+              description: "Create an intelligent enterprise search system using GCP's AI services. Include document processing, semantic search, and query understanding."
+            }
+          },
+          {
+            title: "Week 27: Azure & Multi-cloud Strategies",
+            duration: "14 hours",
+            difficulty: "intermediate",
+            topics: [
+              "Azure Machine Learning Studio",
+              "Cognitive Services and pre-built AI",
+              "Azure Databricks for big data",
+              "Multi-cloud deployment strategies",
+              "Cost optimization across platforms"
+            ],
+            project: {
+              title: "🌐 Project: Multi-cloud ML Solution",
+              description: "Design and implement a machine learning solution that can run across multiple cloud providers. Include cost analysis and migration strategies."
+            }
+          },
+          {
+            title: "Week 28: Big Data & Distributed Computing",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Apache Spark for distributed ML",
+              "Hadoop ecosystem and HDFS",
+              "Distributed training with Horovod",
+              "Ray for scalable ML workloads",
+              "Performance optimization techniques"
+            ],
+            project: {
+              title: "📈 Project: Large-scale Recommendation System",
+              description: "Build a recommendation system that can handle millions of users and items using distributed computing. Include collaborative filtering and deep learning approaches."
+            }
+          }
+        ]
+      },
+      {
+        title: "Month 8: Specialized AI Domains",
+        icon: "🎯",
+        weeks: [
+          {
+            title: "Week 29: Reinforcement Learning",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Markov Decision Processes (MDPs)",
+              "Q-learning and policy gradients",
+              "Deep Q-Networks (DQN)",
+              "Actor-critic methods",
+              "Multi-agent reinforcement learning"
+            ],
+            project: {
+              title: "🎮 Project: Game-playing AI Agent",
+              description: "Create an AI agent that learns to play complex games using reinforcement learning. Include training visualization and performance analysis."
+            }
+          },
+          {
+            title: "Week 30: Generative AI & Creativity",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Diffusion models and DALL-E",
+              "Music and audio generation",
+              "Creative writing with LLMs",
+              "Style transfer and artistic AI",
+              "Ethical considerations in generative AI"
+            ],
+            project: {
+              title: "🎨 Project: Creative AI Studio",
+              description: "Build a platform that combines multiple generative AI models for creative content creation. Include text, image, and audio generation capabilities."
+            }
+          },
+          {
+            title: "Week 31: AI for Science & Research",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "AI for drug discovery",
+              "Climate modeling and environmental AI",
+              "Protein folding and AlphaFold",
+              "Scientific literature analysis",
+              "Automated hypothesis generation"
+            ],
+            project: {
+              title: "🔬 Project: Scientific Discovery Assistant",
+              description: "Create an AI system that assists researchers by analyzing scientific papers, identifying patterns, and suggesting research directions."
+            }
+          },
+          {
+            title: "Week 32: AI Safety & Ethics",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Bias detection and mitigation",
+              "Explainable AI (XAI) methods",
+              "Privacy-preserving ML",
+              "Adversarial attacks and defenses",
+              "AI governance and regulation"
+            ],
+            project: {
+              title: "🛡️ Project: AI Fairness Toolkit",
+              description: "Develop a comprehensive toolkit for detecting and mitigating bias in ML models. Include fairness metrics, visualization tools, and mitigation strategies."
+            }
+          }
+        ]
+      },
+      {
+        title: "Month 9: Advanced Algorithms & Optimization",
+        icon: "🧮",
+        weeks: [
+          {
+            title: "Week 33: Advanced Data Structures",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Trees, graphs, and advanced search algorithms",
+              "Hash tables and bloom filters",
+              "Heaps and priority queues",
+              "Trie and suffix arrays",
+              "Algorithm complexity analysis"
+            ],
+            project: {
+              title: "🔍 Project: High-performance Search Engine",
+              description: "Build a search engine from scratch using advanced data structures. Include indexing, ranking algorithms, and query optimization."
+            }
+          },
+          {
+            title: "Week 34: Optimization Algorithms",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Genetic algorithms and evolutionary computing",
+              "Simulated annealing and hill climbing",
+              "Particle swarm optimization",
+              "Bayesian optimization",
+              "Multi-objective optimization"
+            ],
+            project: {
+              title: "🎯 Project: AutoML Hyperparameter Optimizer",
+              description: "Create an intelligent hyperparameter optimization system using multiple optimization techniques. Include visualization and comparison tools."
+            }
+          },
+          {
+            title: "Week 35: Distributed Systems for AI",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "MapReduce and distributed algorithms",
+              "Consensus algorithms and CAP theorem",
+              "Distributed training strategies",
+              "Load balancing and fault tolerance",
+              "Microservices architecture patterns"
+            ],
+            project: {
+              title: "⚡ Project: Distributed ML Training System",
+              description: "Build a distributed system for training large ML models across multiple machines. Include fault tolerance and dynamic resource allocation."
+            }
+          },
+          {
+            title: "Week 36: Performance Optimization",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Profiling and performance analysis",
+              "Memory optimization techniques",
+              "GPU programming with CUDA",
+              "Vectorization and parallel processing",
+              "Model compression and quantization"
+            ],
+            project: {
+              title: "⚡ Project: Ultra-fast Inference Engine",
+              description: "Optimize a deep learning model for maximum inference speed. Include quantization, pruning, and custom CUDA kernels."
+            }
+          }
+        ]
+      },
+      {
+        title: "Month 10: Business Applications & Product Development",
+        icon: "💼",
+        weeks: [
+          {
+            title: "Week 37: AI Product Management",
+            duration: "14 hours",
+            difficulty: "intermediate",
+            topics: [
+              "AI product lifecycle management",
+              "User experience design for AI",
+              "A/B testing for AI features",
+              "Business metrics and KPIs",
+              "Stakeholder communication"
+            ],
+            project: {
+              title: "📊 Project: AI Product Analytics Dashboard",
+              description: "Build a comprehensive analytics platform for AI products. Include user behavior analysis, model performance tracking, and business impact metrics."
+            }
+          },
+          {
+            title: "Week 38: Recommendation Systems",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Collaborative and content-based filtering",
+              "Matrix factorization techniques",
+              "Deep learning for recommendations",
+              "Cold start and sparsity problems",
+              "Evaluation metrics and offline testing"
+            ],
+            project: {
+              title: "🛒 Project: E-commerce Recommendation Engine",
+              description: "Create a sophisticated recommendation system for e-commerce. Include real-time recommendations, explanation features, and business impact analysis."
+            }
+          },
+          {
+            title: "Week 39: Search & Information Retrieval",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Elasticsearch and search optimization",
+              "Semantic search with embeddings",
+              "Query understanding and expansion",
+              "Ranking algorithms and learning to rank",
+              "Personalized search experiences"
+            ],
+            project: {
+              title: "🔎 Project: Intelligent Document Search",
+              description: "Build an enterprise document search system with semantic understanding. Include query suggestions, result ranking, and user personalization."
+            }
+          },
+          {
+            title: "Week 40: Time Series & Forecasting",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Time series analysis and decomposition",
+              "ARIMA and seasonal models",
+              "Prophet and advanced forecasting",
+              "Deep learning for time series",
+              "Anomaly detection in time series"
+            ],
+            project: {
+              title: "📈 Project: Financial Forecasting Platform",
+              description: "Create a comprehensive financial forecasting system. Include multiple forecasting models, uncertainty quantification, and risk analysis."
+            }
+          }
+        ]
+      },
+      {
+        title: "Month 11: Industry Applications & Specializations",
+        icon: "🏭",
+        weeks: [
+          {
+            title: "Week 41: Healthcare AI",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Medical image analysis",
+              "Electronic health record processing",
+              "Drug discovery and development",
+              "Clinical decision support systems",
+              "Healthcare privacy and compliance"
+            ],
+            project: {
+              title: "🏥 Project: Medical Diagnosis Assistant",
+              description: "Build a comprehensive medical AI system that analyzes symptoms, medical images, and patient history to assist in diagnosis."
+            }
+          },
+          {
+            title: "Week 42: Financial AI & FinTech",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Algorithmic trading strategies",
+              "Credit scoring and risk assessment",
+              "Fraud detection systems",
+              "Robo-advisors and portfolio optimization",
+              "Regulatory compliance (KYC, AML)"
+            ],
+            project: {
+              title: "💰 Project: AI Trading Platform",
+              description: "Create an intelligent trading platform with risk management, portfolio optimization, and market analysis capabilities."
+            }
+          },
+          {
+            title: "Week 43: Autonomous Systems",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Robotics and motion planning",
+              "Sensor fusion and perception",
+              "Control systems and actuators",
+              "SLAM and navigation",
+              "Human-robot interaction"
+            ],
+            project: {
+              title: "🤖 Project: Autonomous Delivery Robot",
+              description: "Design and simulate an autonomous delivery robot. Include path planning, obstacle avoidance, and human interaction capabilities."
+            }
+          },
+          {
+            title: "Week 44: Smart Cities & IoT",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "IoT data processing and analysis",
+              "Smart grid optimization",
+              "Traffic flow optimization",
+              "Environmental monitoring",
+              "Urban planning with AI"
+            ],
+            project: {
+              title: "🏙️ Project: Smart City Management System",
+              description: "Build an integrated smart city platform that optimizes traffic, energy usage, and resource allocation using IoT data and AI."
+            }
+          }
+        ]
+      },
+      {
+        title: "Month 12: Portfolio & Interview Preparation",
+        icon: "🎓",
+        weeks: [
+          {
+            title: "Week 45: Portfolio Development",
+            duration: "14 hours",
+            difficulty: "intermediate",
+            topics: [
+              "GitHub portfolio optimization",
+              "Technical writing and documentation",
+              "Project presentation skills",
+              "Code quality and best practices",
+              "Open source contributions"
+            ],
+            project: {
+              title: "📂 Project: Professional Portfolio Website",
+              description: "Create a comprehensive portfolio website showcasing all your projects. Include interactive demos, technical explanations, and impact metrics."
+            }
+          },
+          {
+            title: "Week 46: Technical Interview Preparation",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Coding interview patterns and techniques",
+              "System design for ML systems",
+              "ML algorithm implementation from scratch",
+              "Problem-solving frameworks",
+              "Time and space complexity analysis"
+            ],
+            project: {
+              title: "💻 Project: Interview Preparation Platform",
+              description: "Build a platform for practicing coding interviews and ML system design. Include automated testing and performance analysis."
+            }
+          },
+          {
+            title: "Week 47: FAANG-specific Preparation",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "Google ML system design patterns",
+              "Meta recommendation system architecture",
+              "Amazon operational excellence principles",
+              "Apple privacy-preserving ML",
+              "Netflix personalization at scale"
+            ],
+            project: {
+              title: "🎯 Project: FAANG Case Study Analysis",
+              description: "Conduct in-depth analysis of ML systems at FAANG companies. Create architectural diagrams and implementation proposals."
+            }
+          },
+          {
+            title: "Week 48: Capstone Project",
+            duration: "14 hours",
+            difficulty: "advanced",
+            topics: [
+              "End-to-end ML system design",
+              "Production deployment strategies",
+              "Business impact measurement",
+              "Presentation and communication",
+              "Future roadmap planning"
+            ],
+            project: {
+              title: "🚀 Project: Complete AI Solution",
+              description: "Build a comprehensive AI solution that demonstrates all skills learned. Include problem identification, solution design, implementation, deployment, and business impact analysis."
+            }
+          }
+        ]
+      }
+    ];
+
+    let saveTimeout;
+    
+    function showSaveIndicator() {
+      const indicator = document.getElementById('saveIndicator');
+      indicator.classList.add('show');
+      setTimeout(() => {
+        indicator.classList.remove('show');
+      }, 2000);
+    }
+
+    function saveToStorage() {
+      clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(() => {
+        const data = {
+          checkboxes: {},
+          projects: {},
+          journals: {},
+          lastSaved: new Date().toISOString()
+        };
+
+        // Save checkbox states
+        document.querySelectorAll('.topic-checkbox, .project-checkbox').forEach(checkbox => {
+          data.checkboxes[checkbox.id] = checkbox.checked;
+        });
+
+        // Save project completions
+        document.querySelectorAll('.project-checkbox').forEach(checkbox => {
+          data.projects[checkbox.id] = checkbox.checked;
+        });
+
+        // Save journal entries
+        document.querySelectorAll('.journal-textarea').forEach(textarea => {
+          if (textarea.value.trim()) {
+            data.journals[textarea.id] = textarea.value;
+          }
+        });
+
+        sessionStorage.setItem('aiRoadmapProgress', JSON.stringify(data));
+        showSaveIndicator();
+      }, 500);
+    }
+
+    function loadFromStorage() {
+      const saved = sessionStorage.getItem('aiRoadmapProgress');
+      if (saved) {
+        const data = JSON.parse(saved);
+        
+        // Restore checkbox states
+        Object.entries(data.checkboxes || {}).forEach(([id, checked]) => {
+          const checkbox = document.getElementById(id);
+          if (checkbox) {
+            checkbox.checked = checked;
+          }
+        });
+
+        // Restore journal entries
+        Object.entries(data.journals || {}).forEach(([id, value]) => {
+          const textarea = document.getElementById(id);
+          if (textarea) {
+            textarea.value = value;
+          }
+        });
+      }
+    }
+
+    function updateProgress() {
+      const allTopics = document.querySelectorAll('.topic-checkbox');
+      const checkedTopics = document.querySelectorAll('.topic-checkbox:checked');
+      const allProjects = document.querySelectorAll('.project-checkbox');
+      const checkedProjects = document.querySelectorAll('.project-checkbox:checked');
+      const journalTextareas = document.querySelectorAll('.journal-textarea');
+      const filledJournals = Array.from(journalTextareas).filter(textarea => textarea.value.trim().length > 0);
+
+      const totalItems = allTopics.length + allProjects.length;
+      const completedItems = checkedTopics.length + checkedProjects.length;
+      const totalProgress = totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
+      
+      document.getElementById('totalProgress').textContent = totalProgress + '%';
+      document.getElementById('completedTopics').textContent = checkedTopics.length;
+      document.getElementById('completedProjects').textContent = checkedProjects.length;
+      document.getElementById('journalEntries').textContent = filledJournals.length;
+
+      // Update week progress bars
+      roadmap.forEach((month, mIndex) => {
+        month.weeks.forEach((week, wIndex) => {
+          const weekTopics = document.querySelectorAll(`input[id^="m${mIndex}w${wIndex}t"]`);
+          const weekProjects = document.querySelectorAll(`input[id^="m${mIndex}w${wIndex}p"]`);
+          const weekCheckedTopics = document.querySelectorAll(`input[id^="m${mIndex}w${wIndex}t"]:checked`);
+          const weekCheckedProjects = document.querySelectorAll(`input[id^="m${mIndex}w${wIndex}p"]:checked`);
+          
+          const totalWeekItems = weekTopics.length + weekProjects.length;
+          const completedWeekItems = weekCheckedTopics.length + weekCheckedProjects.length;
+          const weekProgress = totalWeekItems > 0 ? (completedWeekItems / totalWeekItems) * 100 : 0;
+          
+          const progressBar = document.querySelector(`#week-${mIndex}-${wIndex} .progress-fill`);
+          const progressText = document.querySelector(`#week-${mIndex}-${wIndex} .progress-text`);
+          
+          if (progressBar) {
+            progressBar.style.width = weekProgress + '%';
+          }
+          if (progressText) {
+            progressText.textContent = Math.round(weekProgress) + '%';
+          }
+        });
+      });
+    }
+
+    function renderRoadmap() {
+      const container = document.getElementById("roadmap");
+      
+      roadmap.forEach((month, mIndex) => {
+        const monthSection = document.createElement("div");
+        monthSection.className = "month-section";
+        
+        const monthTitle = document.createElement("h2");
+        monthTitle.className = "month-title";
+        monthTitle.innerHTML = `<span class="month-icon">${month.icon}</span>${month.title}`;
+        monthSection.appendChild(monthTitle);
+
+        const weeksGrid = document.createElement("div");
+        weeksGrid.className = "weeks-grid";
+
+        month.weeks.forEach((week, wIndex) => {
+          const weekCard = document.createElement("div");
+          weekCard.className = "week-card";
+          weekCard.id = `week-${mIndex}-${wIndex}`;
+
+          weekCard.innerHTML = `
+            <div class="difficulty-badge difficulty-${week.difficulty}">${week.difficulty.toUpperCase()}</div>
+            <div class="week-header">
+              <h3 class="week-title">${week.title}</h3>
+              <div class="week-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill"></div>
+                </div>
+                <span class="progress-text">0%</span>
+              </div>
+              <div class="week-duration">${week.duration}</div>
+            </div>
+            <div class="week-content">
+              <div class="topics-section">
+                <h4 class="section-title">📚 Learning Topics</h4>
+                <ul class="topics-list">
+                  ${week.topics.map((topic, tIndex) => `
+                    <li class="topic-item">
+                      <input type="checkbox" class="topic-checkbox" id="m${mIndex}w${wIndex}t${tIndex}" 
+                             onchange="updateProgress(); saveToStorage();" />
+                      <label class="topic-label" for="m${mIndex}w${wIndex}t${tIndex}">${topic}</label>
+                    </li>
+                  `).join("")}
+                </ul>
+              </div>
+              
+              <div class="project-section">
+                <div class="project-title">
+                  <input type="checkbox" class="project-checkbox" id="m${mIndex}w${wIndex}p0" 
+                         onchange="updateProgress(); saveToStorage();" />
+                  ${week.project.title}
+                </div>
+                <div class="project-description">${week.project.description}</div>
+              </div>
+
+              <div class="journal-section">
+                <label class="journal-label" for="j${mIndex}_${wIndex}">📝 Weekly Reflection & Progress</label>
+                <textarea class="journal-textarea" id="j${mIndex}_${wIndex}" 
+                         placeholder="Record your learning progress, challenges, key insights, project outcomes, and preparation for FAANG interviews..."
+                         oninput="updateProgress(); saveToStorage();"></textarea>
+              </div>
+            </div>
+          `;
+
+          weeksGrid.appendChild(weekCard);
+        });
+
+        monthSection.appendChild(weeksGrid);
+        container.appendChild(monthSection);
+      });
+    }
+
+    async function downloadPDF() {
+      const button = document.querySelector('.download-btn');
+      button.innerHTML = '⏳ Generating Comprehensive PDF...';
+      button.disabled = true;
+      button.classList.add('loading');
+
+      try {
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        
+        const pageWidth = pdf.internal.pageSize.width;
+        const pageHeight = pdf.internal.pageSize.height;
+        const margin = 20;
+        let yPosition = margin;
+
+        function checkPageSpace(requiredSpace) {
+          if (yPosition + requiredSpace > pageHeight - margin) {
+            pdf.addPage();
+            yPosition = margin;
+          }
+        }
+
+        // Header
+        pdf.setFillColor(30, 58, 138);
+        pdf.rect(0, 0, pageWidth, 50, 'F');
+        
+        pdf.setTextColor(255, 255, 255);
+        pdf.setFontSize(28);
+        pdf.setFont(undefined, 'bold');
+        pdf.text('FAANG AI Specialist Progress Report', pageWidth/2, 25, { align: 'center' });
+        
+        pdf.setFontSize(14);
+        pdf.setFont(undefined, 'normal');
+        const reportDate = new Date().toLocaleDateString('en-US', { 
+          year: 'numeric', month: 'long', day: 'numeric' 
+        });
+        pdf.text(`Generated on ${reportDate}`, pageWidth/2, 35, { align: 'center' });
+        pdf.text('12-Month FAANG AI Specialist Roadmap', pageWidth/2, 45, { align: 'center' });
+
+        yPosition = 60;
+
+        // Executive Summary
+        checkPageSpace(30);
+        pdf.setTextColor(0, 0, 0);
+        pdf.setFontSize(18);
+        pdf.setFont(undefined, 'bold');
+        pdf.text('Executive Summary', margin, yPosition);
+        yPosition += 10;
+
+        const allTopics = document.querySelectorAll('.topic-checkbox');
+        const checkedTopics = document.querySelectorAll('.topic-checkbox:checked');
+        const allProjects = document.querySelectorAll('.project-checkbox');
+        const checkedProjects = document.querySelectorAll('.project-checkbox:checked');
+        const journalTextareas = document.querySelectorAll('.journal-textarea');
+        const filledJournals = Array.from(journalTextareas).filter(t => t.value.trim().length > 0);
+        
+        const totalItems = allTopics.length + allProjects.length;
+        const completedItems = checkedTopics.length + checkedProjects.length;
+        const totalProgress = totalItems > 0 ? Math.round((completedItems / totalItems) * 100) : 0;
+
+        pdf.setFontSize(12);
+        pdf.setFont(undefined, 'normal');
+        const summary = [
+          `Overall Completion: ${totalProgress}% (${completedItems}/${totalItems} items)`,
+          `Learning Topics Mastered: ${checkedTopics.length}/${allTopics.length}`,
+          `Projects Completed: ${checkedProjects.length}/${allProjects.length}`,
+          `Weekly Reflections: ${filledJournals.length}/${journalTextareas.length}`,
+          `Study Period: August 2025 - July 2026`,
+          `Target Companies: Google, Meta, Amazon, Apple, Netflix, OpenAI`,
+          `Daily Commitment: 2 hours (700+ total hours)`
+        ];
+
+        summary.forEach(item => {
+          checkPageSpace(6);
+          pdf.text(`• ${item}`, margin + 5, yPosition);
+          yPosition += 6;
+        });
+
+        yPosition += 10;
+
+        // Skills Assessment
+        checkPageSpace(25);
+        pdf.setFontSize(16);
+        pdf.setFont(undefined, 'bold');
+        pdf.setTextColor(59, 130, 246);
+        pdf.text('Skills Assessment for FAANG Interviews', margin, yPosition);
+        yPosition += 10;
+
+        const skillAreas = [
+          'Programming & Algorithms',
+          'Machine Learning Fundamentals', 
+          'Deep Learning & Neural Networks',
+          'Natural Language Processing',
+          'Computer Vision',
+          'MLOps & Production Systems',
+          'Cloud Platforms & Big Data',
+          'System Design',
+          'Business Applications'
+        ];
+
+        pdf.setFontSize(12);
+        pdf.setFont(undefined, 'normal');
+        pdf.setTextColor(0, 0, 0);
+        skillAreas.forEach((skill, index) => {
+          checkPageSpace(6);
+          const monthProgress = Math.min(Math.floor((index + 1) * totalProgress / 9), 100);
+          pdf.text(`${skill}: ${monthProgress}% Ready`, margin + 5, yPosition);
+          yPosition += 6;
+        });
+
+        yPosition += 10;
+
+        // Monthly Progress Details
+        roadmap.forEach((month, mIndex) => {
+          checkPageSpace(35);
+          
+          pdf.setFontSize(16);
+          pdf.setFont(undefined, 'bold');
+          pdf.setTextColor(59, 130, 246);
+          pdf.text(`${month.icon} ${month.title}`, margin, yPosition);
+          yPosition += 10;
+
+          month.weeks.forEach((week, wIndex) => {
+            checkPageSpace(25);
+            
+            // Calculate week progress
+            const weekTopics = document.querySelectorAll(`input[id^="m${mIndex}w${wIndex}t"]`);
+            const weekProjects = document.querySelectorAll(`input[id^="m${mIndex}w${wIndex}p"]`);
+            const weekCheckedTopics = document.querySelectorAll(`input[id^="m${mIndex}w${wIndex}t"]:checked`);
+            const weekCheckedProjects = document.querySelectorAll(`input[id^="m${mIndex}w${wIndex}p"]:checked`);
+            
+            const totalWeekItems = weekTopics.length + weekProjects.length;
+            const completedWeekItems = weekCheckedTopics.length + weekCheckedProjects.length;
+            const weekProgress = totalWeekItems > 0 ? Math.round((completedWeekItems / totalWeekItems) * 100) : 0;
+
+            pdf.setFontSize(14);
+            pdf.setFont(undefined, 'bold');
+            pdf.setTextColor(0, 0, 0);
+            pdf.text(`${week.title} - ${weekProgress}% Complete`, margin + 10, yPosition);
+            yPosition += 6;
+
+            pdf.setFontSize(10);
+            pdf.setFont(undefined, 'italic');
+            pdf.setTextColor(100, 100, 100);
+            pdf.text(`Duration: ${week.duration} | Difficulty: ${week.difficulty.toUpperCase()}`, margin + 10, yPosition);
+            yPosition += 5;
+
+            // Learning Topics
+            pdf.setFont(undefined, 'normal');
+            pdf.setFontSize(10);
+            pdf.setTextColor(0, 0, 0);
+            pdf.text('Learning Topics:', margin + 15, yPosition);
+            yPosition += 4;
+
+            week.topics.forEach((topic, tIndex) => {
+              checkPageSpace(4);
+              const checkbox = document.getElementById(`m${mIndex}w${wIndex}t${tIndex}`);
+              const isChecked = checkbox && checkbox.checked;
+              const symbol = isChecked ? '☑' : '☐';
+              
+              const lines = pdf.splitTextToSize(`${symbol} ${topic}`, pageWidth - margin * 2 - 25);
+              lines.forEach(line => {
+                checkPageSpace(4);
+                pdf.text(line, margin + 20, yPosition);
+                yPosition += 4;
+              });
+            });
+
+            // Project
+            checkPageSpace(8);
+            pdf.setFont(undefined, 'bold');
+            pdf.text('Project:', margin + 15, yPosition);
+            yPosition += 4;
+
+            const projectCheckbox = document.getElementById(`m${mIndex}w${wIndex}p0`);
+            const isProjectCompleted = projectCheckbox && projectCheckbox.checked;
+            const projectSymbol = isProjectCompleted ? '☑' : '☐';
+            
+            const projectLines = pdf.splitTextToSize(`${projectSymbol} ${week.project.title}`, pageWidth - margin * 2 - 25);
+            projectLines.forEach(line => {
+              checkPageSpace(4);
+              pdf.text(line, margin + 20, yPosition);
+              yPosition += 4;
+            });
+
+            const descLines = pdf.splitTextToSize(week.project.description, pageWidth - margin * 2 - 25);
+            descLines.forEach(line => {
+              checkPageSpace(4);
+              pdf.setFont(undefined, 'normal');
+              pdf.setTextColor(80, 80, 80);
+              pdf.text(line, margin + 20, yPosition);
+              yPosition += 4;
+            });
+
+            // Journal entry
+            const journalTextarea = document.getElementById(`j${mIndex}_${wIndex}`);
+            if (journalTextarea && journalTextarea.value.trim()) {
+              checkPageSpace(15);
+              pdf.setFont(undefined, 'bold');
+              pdf.setTextColor(0, 0, 0);
+              pdf.text('Weekly Reflection:', margin + 15, yPosition);
+              yPosition += 4;
+              
+              const journalText = journalTextarea.value.trim();
+              const journalLines = pdf.splitTextToSize(journalText, pageWidth - margin * 2 - 25);
+              journalLines.forEach(line => {
+                checkPageSpace(4);
+                pdf.setFont(undefined, 'italic');
+                pdf.setTextColor(60, 60, 60);
+                pdf.text(line, margin + 20, yPosition);
+                yPosition += 4;
+              });
+            }
+
+            yPosition += 6;
+          });
+
+          yPosition += 8;
+        });
+
+        // Interview Readiness Assessment
+        checkPageSpace(40);
+        pdf.setFontSize(18);
+        pdf.setFont(undefined, 'bold');
+        pdf.setTextColor(124, 58, 237);
+        pdf.text('FAANG Interview Readiness Assessment', margin, yPosition);
+        yPosition += 12;
+
+        const interviewAreas = [
+          {
+            area: 'Coding & Algorithms',
+            skills: ['Data Structures', 'Algorithm Design', 'Complexity Analysis', 'Python Proficiency'],
+            readiness: Math.min(totalProgress + 10, 100)
+          },
+          {
+            area: 'Machine Learning Systems',
+            skills: ['ML Pipeline Design', 'Model Selection', 'Feature Engineering', 'Evaluation Metrics'],
+            readiness: Math.min(totalProgress, 100)
+          },
+          {
+            area: 'System Design',
+            skills: ['Scalable Architecture', 'Database Design', 'Distributed Systems', 'Performance Optimization'],
+            readiness: Math.min(totalProgress - 5, 100)
+          },
+          {
+            area: 'Behavioral & Leadership',
+            skills: ['Problem Solving', 'Communication', 'Project Management', 'Team Collaboration'],
+            readiness: Math.min(totalProgress + 5, 100)
+          }
+        ];
+
+        interviewAreas.forEach(area => {
+          checkPageSpace(20);
+          
+          pdf.setFontSize(14);
+          pdf.setFont(undefined, 'bold');
+          pdf.setTextColor(0, 0, 0);
+          pdf.text(`${area.area}: ${Math.max(0, area.readiness)}% Ready`, margin + 5, yPosition);
+          yPosition += 6;
+
+          pdf.setFontSize(10);
+          pdf.setFont(undefined, 'normal');
+          pdf.setTextColor(80, 80, 80);
+          area.skills.forEach(skill => {
+            checkPageSpace(4);
+            pdf.text(`• ${skill}`, margin + 10, yPosition);
+            yPosition += 4;
+          });
+          yPosition += 4;
+        });
+
+        // Next Steps & Recommendations
+        checkPageSpace(30);
+        pdf.setFontSize(16);
+        pdf.setFont(undefined, 'bold');
+        pdf.setTextColor(16, 185, 129);
+        pdf.text('Next Steps & Recommendations', margin, yPosition);
+        yPosition += 10;
+
+        const recommendations = [
+          'Complete remaining projects to strengthen your portfolio',
+          'Practice coding interviews on LeetCode and HackerRank',
+          'Study system design patterns for large-scale applications',
+          'Prepare behavioral stories using the STAR method',
+          'Network with current FAANG employees on LinkedIn',
+          'Apply to companies when you reach 80%+ completion',
+          'Prepare for technical discussions about your projects',
+          'Stay updated with latest AI/ML trends and research'
+        ];
+
+        pdf.setFontSize(12);
+        pdf.setFont(undefined, 'normal');
+        pdf.setTextColor(0, 0, 0);
+        recommendations.forEach(rec => {
+          checkPageSpace(6);
+          pdf.text(`• ${rec}`, margin + 5, yPosition);
+          yPosition += 6;
+        });
+
+        // Footer on all pages
+        const totalPages = pdf.internal.getNumberOfPages();
+        for (let i = 1; i <= totalPages; i++) {
+          pdf.setPage(i);
+          pdf.setFontSize(8);
+          pdf.setTextColor(128, 128, 128);
+          pdf.text(`Page ${i} of ${totalPages}`, pageWidth - margin, pageHeight - 10, { align: 'right' });
+          pdf.text('FAANG AI Specialist Roadmap Progress Report', margin, pageHeight - 10);
+          pdf.text('Generated by AI Learning Platform', pageWidth/2, pageHeight - 10, { align: 'center' });
+        }
+
+        // Save the PDF
+        const fileName = `FAANG_AI_Specialist_Progress_${new Date().toISOString().split('T')[0]}.pdf`;
+        pdf.save(fileName);
+
+      } catch (error) {
+        console.error('Error generating PDF:', error);
+        alert('Error generating PDF. Please try again.');
+      } finally {
+        button.innerHTML = '📄 Download Complete Progress Report';
+        button.disabled = false;
+        button.classList.remove('loading');
+      }
+    }
+
+    // Initialize the app
+    document.addEventListener('DOMContentLoaded', function() {
+      renderRoadmap();
+      loadFromStorage();
+      updateProgress();
+      
+      // Update study streak
+      const saved = sessionStorage.getItem('aiRoadmapProgress');
+      if (saved) {
+        const data = JSON.parse(saved);
+        const lastSaved = new Date(data.lastSaved);
+        const today = new Date();
+        const daysDiff = Math.floor((today - lastSaved) / (1000 * 60 * 60 * 24));
+        
+        let streak = parseInt(sessionStorage.getItem('studyStreak') || '0');
+        if (daysDiff === 1) {
+          streak += 1;
+        } else if (daysDiff > 1) {
+          streak = 1;
+        }
+        
+        sessionStorage.setItem('studyStreak', streak.toString());
+        document.getElementById('studyStreak').textContent = streak;
+      }
+
+      // Show welcome message for new users
+      if (!saved) {
+        setTimeout(() => {
+          const welcomeMsg = `
+🎉 Welcome to your FAANG AI Specialist Journey!
+
+This comprehensive 12-month roadmap is designed to prepare you for AI roles at:
+• Google (DeepMind, Brain, Applied AI)
+• Meta (FAIR, Reality Labs, Core AI)
+• Amazon (Alexa, AWS AI, Prime)
+• Apple (Siri, Machine Learning)
+• Netflix (Personalization, Content AI)
+• OpenAI and other top AI companies
+
+Key Features:
+✅ 48 hands-on projects (1 per week)
+✅ 200+ essential topics
+✅ Interview-focused learning
+✅ Auto-save progress
+✅ Comprehensive PDF reports
+
+Start with Month 1 and commit to 2 hours daily.
+Your journey to landing a FAANG AI role begins now! 🚀
+          `;
+          alert(welcomeMsg);
+        }, 1000);
+      }
+    });
+
+    // Auto-save every 30 seconds
+    setInterval(() => {
+      const data = sessionStorage.getItem('aiRoadmapProgress');
+      if (data) {
+        const parsed = JSON.parse(data);
+        parsed.lastSaved = new Date().toISOString();
+        sessionStorage.setItem('aiRoadmapProgress', JSON.stringify(parsed));
+      }
+    }, 30000);
+
+    // Add keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+      // Ctrl+S to save progress
+      if (e.ctrlKey && e.key === 's') {
+        e.preventDefault();
+        saveToStorage();
+        showSaveIndicator();
+      }
+      
+      // Ctrl+D to download PDF
+      if (e.ctrlKey && e.key === 'd') {
+        e.preventDefault();
+        downloadPDF();
+      }
+    });
+
+    // Add motivational quotes
+    const motivationalQuotes = [
+      "The expert in anything was once a beginner. - Helen Hayes",
+      "AI is the new electricity. - Andrew Ng", 
+      "The future belongs to those who learn more skills. - Reid Hoffman",
+      "In the midst of difficulty lies opportunity. - Einstein",
+      "Success is not final, failure is not fatal. - Churchill"
+    ];
+
+    function showRandomQuote() {
+      const quote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
+      console.log(`💡 Daily Motivation: ${quote}`);
+    }
+
+    // Show quote on load
+    showRandomQuote();
+
+    // Add progress celebration
+    function celebrateProgress() {
+      const totalProgress = parseInt(document.getElementById('totalProgress').textContent);
+      
+      if (totalProgress === 25) {
+        alert('🎉 Congratulations! You\'re 25% complete! Keep up the great work!');
+      } else if (totalProgress === 50) {
+        alert('🎊 Amazing! You\'re halfway through your FAANG AI journey!');
+      } else if (totalProgress === 75) {
+        alert('🚀 Outstanding! You\'re 75% ready for FAANG interviews!');
+      } else if (totalProgress === 100) {
+        alert('🏆 INCREDIBLE! You\'ve completed the entire roadmap! Time to apply to FAANG companies!');
+      }
+    }
+
+    // Monitor progress for celebrations
+    const originalUpdateProgress = updateProgress;
+    updateProgress = function() {
+      const oldProgress = parseInt(document.getElementById('totalProgress').textContent || '0');
+      originalUpdateProgress();
+      const newProgress = parseInt(document.getElementById('totalProgress').textContent || '0');
+      
+      if (newProgress > oldProgress && [25, 50, 75, 100].includes(newProgress)) {
+        setTimeout(celebrateProgress, 500);
+      }
+    };
+  </script>
+</body>
+</html>
